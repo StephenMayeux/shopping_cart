@@ -2,18 +2,13 @@
 
 {<body}
     {#books}
-      {.title}
-    {/books}
-    <div class="large-3 columns book">
-      <img src="" alt="" />
-      <h4>Blank</h4>
-      <p>
-        Blank
-      </p>
-      <div class="price">
-
+      <div class="large-3 columns book">
+        <img src="/img/{.cover}" alt="" />
+        <h4>{.title}</h4>
+        <p>{.truncateText}</p>
+        <div class="price">Buy it for <span>${.price}</span></div>
+        <br>
+        <a href="/books/details/{._id}" class="button small">Details</a>
       </div>
-      <br>
-    </div>
-    <a href="/books/details/1" class="button small">Blank</a>
+    {/books}
 {/body}

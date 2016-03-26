@@ -9,9 +9,14 @@ var bookModel = function() {
       description: String,
       author: String,
       publisher: String,
-      price: Number,
+      price: String,
       cover: String
   });
+
+  // shorten description text
+  bookSchema.methods.truncateText = function(length) {
+    return this.description.substring(0, length);
+  };
   return mongoose.model('Book', bookSchema);
 };
 module.exports = new bookModel();

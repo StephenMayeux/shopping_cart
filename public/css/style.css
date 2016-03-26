@@ -33,3 +33,7 @@ footer {
   border: 1px #ccc solid;
   border-radius: 50%;
 }
+
+[class*="column"] + [class*="column"]:last-child {
+  float: left;
+}

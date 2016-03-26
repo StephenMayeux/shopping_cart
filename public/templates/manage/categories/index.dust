@@ -15,24 +15,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>97239usf32098</td>
-      <td>Sample Category</td>
-      <td><a class="button tiny" href="/manage/categories/edit/1">Edit</a></td>
-      <td><a class="button tiny alert removeCategory">Delete</a></td>
-    </tr>
-    <tr>
-      <td>97239usf32098</td>
-      <td>Sample Category</td>
-      <td><a class="button tiny" href="/manage/categories/edit/1">Edit</a></td>
-      <td><a class="button tiny alert removeCategory">Delete</a></td>
-    </tr>
-    <tr>
-      <td>97239usf32098</td>
-      <td>Sample Category</td>
-      <td><a class="button tiny" href="/manage/categories/edit/1">Edit</a></td>
-      <td><a class="button tiny alert removeCategory">Delete</a></td>
-    </tr>
+    {#categories}
+      <tr>
+        <td>{._id}</td>
+        <td>{.name}</td>
+        <td><a class="button tiny" href="/manage/categories/edit/{._id}">Edit</a></td>
+        <td><a class="button tiny alert removeCategory">Delete</a></td>
+      </tr>
+    {/categories}
   </tbody>
 </table>
 {/body}
