@@ -1,5 +1,16 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>{@pre type="content" key="greeting"/}</h1>
+    <div class="large-3 columns book">
+      <img src="" alt="" />
+      <h4>Blank</h4>
+      <p>
+        Blank
+      </p>
+      <div class="price">
+
+      </div>
+      <br>
+    </div>
+    <a href="/book/id" class="button small">Blank</a>
 {/body}
