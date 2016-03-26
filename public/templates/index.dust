@@ -12,5 +12,5 @@
       </div>
       <br>
     </div>
-    <a href="/book/id" class="button small">Blank</a>
+    <a href="/books/details/1" class="button small">Blank</a>
 {/body}
