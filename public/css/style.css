@@ -37,3 +37,8 @@ footer {
 [class*="column"] + [class*="column"]:last-child {
   float: left;
 }
+
+.book {
+  float:left;
+  height: 300px;
+}
