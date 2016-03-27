@@ -78,4 +78,60 @@ module.exports = function (router) {
 
     });
 
+    router.get('/books/edit/:id', function(req, res) {
+      Category.find({}, function(err, categories) {
+        if (err) throw err;
+        Book.findOne({_id: req.params.id}, function(err, book) {
+          if (err) throw err;
+          var model = {
+            book: book,
+            categories: categories
+          };
+          res.render('manage/books/edit', model);
+        });
+      });
+    });
+
+    router.post('/books/edit/:id', function(req, res) {
+      var title     =  req.body.title && req.body.title.trim(),
+          category  =  req.body.category && req.body.category.trim(),
+          author    =  req.body.author && req.body.author.trim(),
+          publisher =  req.body.publisher && req.body.publisher.trim(),
+          price     =  req.body.price && req.body.price.trim(),
+          desc      =  req.body.description && req.body.description.trim(),
+          cover     = req.body.cover && req.body.cover.trim(),
+          error     = false;
+
+      if (title === '' || price === '') {
+        error = true;
+        req.flash('error', 'Please fill out required fields');
+        res.location('/manage/books/edit/' + req.params.id);
+        res.redirect('/manage/books/edit/' + req.params.id);
+      }
+
+      if (isNaN(price)) {
+        error = true;
+        req.flash('error', 'Price must be a number');
+        res.location('/manage/books/edit/' + req.params.id);
+        res.redirect('/manage/books/edit/' + req.params.id);
+      }
+
+      if (!error) {
+        Book.update({_id: req.params.id}, {
+          title: title,
+          category: category,
+          author: author,
+          publisher: publisher,
+          price: price,
+          description: desc,
+          cover: cover
+        }, function(err) {
+          if (err) throw err;
+          req.flash('success', 'Book was updated!');
+          res.location('/manage/books');
+          res.redirect('/manage/books');
+        });
+      }
+    });
+
 };
