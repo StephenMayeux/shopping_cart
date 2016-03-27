@@ -134,4 +134,13 @@ module.exports = function (router) {
       }
     });
 
+    router.delete('/books/delete/:id', function(req, res) {
+      Book.remove({_id: req.params.id}, function(err) {
+        if (err) throw err;
+        req.flash('success', 'Book was deleted!');
+        res.location('/manage/books');
+        res.redirect('/manage/books');
+      });
+    });
+
 };
