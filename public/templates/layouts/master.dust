@@ -22,7 +22,6 @@
             <section class="top-bar-section">
               <ul class="left">
                 <li><a href="/">Home</a></li>
-                <li><a href="/pages/about">About</a></li>
                 <li><a href="/cart">Cart</a></li>
               </ul>
             </section>

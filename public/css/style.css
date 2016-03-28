@@ -42,3 +42,7 @@ footer {
   float:left;
   height: 300px;
 }
+
+h2 span {
+  font-size: 18px;
+}
