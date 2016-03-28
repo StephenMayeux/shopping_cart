@@ -143,4 +143,33 @@ module.exports = function (router) {
       });
     });
 
+    router.get('/categories/add', function(req, res) {
+      res.render('manage/categories/add');
+    });
+
+    router.post('/categories', function(req, res) {
+      var name = req.body.name && req.body.name.trim(),
+          error = false;
+
+      if (name === '') {
+        error = true;
+        req.flash('error', 'Please give the new category a name!');
+        res.location('/manage/categories/add');
+        res.redirect('/manage/categories/add');
+      }
+
+      if (!error) {
+        var newCategory = new Category({
+          name: name
+        });
+        newCategory.save(function(err) {
+          if (err) throw err;
+          req.flash('success', 'New category was added!');
+          res.location('/manage/categories');
+          res.redirect('/manage/categories');
+        });
+      }
+
+    });
+
 };
