@@ -172,4 +172,22 @@ module.exports = function (router) {
 
     });
 
+    router.get('/categories/edit/:id', function(req, res) {
+      Category.findOne({_id: req.params.id}, function(err, category) {
+        if (err) throw err;
+        var model = {category: category};
+        res.render('manage/categories/edit', model);
+      });
+    });
+
+    router.post('/categories/edit/:id', function(req, res) {
+      var name = req.body.name.trim();
+      Category.update({_id: req.params.id}, {name: name}, function(err) {
+        if (err) throw err;
+        req.flash('success', 'Category was updated!');
+        res.location('/manage/categories');
+        res.redirect('/manage/categories');
+      });
+    });
+
 };
