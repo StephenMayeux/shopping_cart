@@ -190,4 +190,13 @@ module.exports = function (router) {
       });
     });
 
+    router.delete('/categories/delete/:id', function(req, res) {
+      Category.remove({_id: req.params.id}, function(err) {
+        if (err) throw err;
+        req.flash('success', 'Category was deleted!');
+        res.location('/manage/categories');
+        res.redirect('/manage/categories');
+      });
+    });
+
 };

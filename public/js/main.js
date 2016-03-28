@@ -10,4 +10,16 @@ $(document).ready(function() {
     });
     window.location = '/manage/books';
   });
+
+  $('.removeCategory').on('click', function(e) {
+    var deleteId = $(this).data('id');
+    $.ajax({
+      url: '/manage/categories/delete/' + deleteId,
+      type: 'DELETE',
+      success: function() {
+        console.log('Book was removed!');
+      }
+    });
+    window.location = '/manage/categories';
+  });
 });
